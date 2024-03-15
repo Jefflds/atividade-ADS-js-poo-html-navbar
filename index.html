@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: none; 
+    }
+
+    nav ul li {
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .toggle-btn {
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <header>
+      <span class="toggle-btn closed">=</span>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#sobrenos">Sobre Nós</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <script>
+      class Navbar {
+        constructor() {
+          this.toggleBtn = document.querySelector(".toggle-btn");
+          this.nav = document.querySelector("nav");
+          this.navList = document.querySelector("nav ul");
+          this.isOpen = false;
+          this.toggleBtn.addEventListener(
+            "click",
+            this.toggleNavbar.bind(this)
+          );
+        }
+
+        toggleNavbar() {
+          this.isOpen = !this.isOpen;
+          if (this.isOpen) {
+            this.navList.style.display = "block";
+            this.toggleBtn.textContent = "X";
+          } else {
+            this.navList.style.display = "none";
+            this.toggleBtn.textContent = "=";
+          }
+        }
+      }
+
+      const navbar = new Navbar();
+    </script>
+  </body>
+</html>
